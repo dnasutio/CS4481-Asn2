@@ -11,7 +11,7 @@ struct node *generate_huffman_nodes(long int *pixel_frequency, int max_gray_valu
 number_of_non_zero_values_in_the_frequency_array) {
   // create ordered pair array and set unmarked nodes to number of non zero values in frequency array
   struct node *ordered_pairs;
-  ordered_pairs = (struct node*) malloc(number_of_non_zero_values_in_the_frequency_array - 1);
+  ordered_pairs = (struct node*) malloc(sizeof(struct node) * (number_of_non_zero_values_in_the_frequency_array - 1));
 
   // test
   for (int j = 0; j < 6; j ++)
