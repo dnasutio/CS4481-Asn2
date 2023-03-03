@@ -2,51 +2,36 @@
 #include <stdlib.h>
 #include <string.h>
 
-void doThing(int number_of_nodes) {
-  unsigned char *huffman_codes[number_of_nodes + 1];
-  for (int i = 0; i < number_of_nodes + 1; i++) {
-    huffman_codes[i] = (unsigned char *) malloc(sizeof (unsigned char));
-  }
+void doThing() {
+    int first = 0b1010;
+              //^^v See here
+    int second = 0b0011;
+    int result = (first << 4) | second;
+    printf("%d\n", result);
 
-  unsigned char zero = '0';
-  unsigned char one = '1';
+    int temp = first;
+    for (int i = 0; i < 4; i ++) {
+      if (temp & 1 == 1) {
+        printf("right\n");
+      } else {
+        printf("left\n");
+      }
+      temp = temp >> 1;
+    }
 
-  strncat(huffman_codes[0], &zero, 1);
-  printf("%s\n", huffman_codes[0]);
+    int x = 100;
+    int y = 0;
+    unsigned pow = 10;
+    while(y >= pow)
+        pow *= 10;
+    int sol = x * pow + y;
+    printf("sol %d\n", sol);
 
-  strncat(huffman_codes[0], &one, 1);
-  printf("%s\n", huffman_codes[0]);
 
-  strncat(huffman_codes[0], &one, 1);
-  printf("%s\n", huffman_codes[0]);
-
-  strncat(huffman_codes[1], &zero, 1);
-  printf("%s\n", huffman_codes[1]);
-
-  strncat(huffman_codes[1], &zero, 1);
-  printf("%s\n", huffman_codes[1]);
-
-  strncat(huffman_codes[1], &zero, 1);
-  printf("%s\n", huffman_codes[1]);
-
-  strncat(huffman_codes[1], &one, 1);
-  printf("%s\n", huffman_codes[1]);
-
-  strncat(huffman_codes[0], &zero, 1);
-  printf("%s\n", huffman_codes[0]);
-
-  
-
-  printf("balls\n");
-
-  
-
-  for (int i = 0; i < 6; i++) {
-    printf("%s\n", huffman_codes[i]);
-  }
+    return 0;
 }
 
 int main() {
-  doThing(5);
+  doThing();
   return 0;
 }

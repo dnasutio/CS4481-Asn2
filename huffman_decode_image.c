@@ -114,7 +114,7 @@ number_of_nodes, struct node *huffman_node, long int length_of_encoded_image_arr
 }
 
 // For testing only
-int main() {
+int main1() {
   struct node huffman_node[5];
   huffman_node[0].first_value = 3;
   huffman_node[0].second_value = 5;

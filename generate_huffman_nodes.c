@@ -4,14 +4,17 @@
 
 struct node *generate_huffman_nodes(long int *pixel_frequency, int max_gray_value, int
 number_of_non_zero_values_in_the_frequency_array) {
+  printf("GENERATING HUFFMAN NODES...\n");
+  printf("Zeroes: %d\n", number_of_non_zero_values_in_the_frequency_array);
   // create ordered pair array and set unmarked nodes to number of non zero values in frequency array
   struct node *ordered_pairs;
-  ordered_pairs = (struct node*) malloc(sizeof(struct node) * (number_of_non_zero_values_in_the_frequency_array - 1));
-
+  int num_ordered_pairs = number_of_non_zero_values_in_the_frequency_array - 1;
+  ordered_pairs = malloc(sizeof(ordered_pairs) * (num_ordered_pairs));
+  printf("Zeroes: %d\n", number_of_non_zero_values_in_the_frequency_array);
   // test
-  for (int j = 0; j < 6; j ++)
-    printf("%ld\n", pixel_frequency[j]);
- 
+  /* for (int i = 0; i < 256; i++) {
+    printf("%d %ld\n", i, pixel_frequency[i]);
+  } */
 
   // initialize ordered_pairs value
   for (int j = 0; j < number_of_non_zero_values_in_the_frequency_array - 1; j++) {
@@ -19,6 +22,7 @@ number_of_non_zero_values_in_the_frequency_array) {
     ordered_pairs[j].second_value = -1;
   }
   
+
   printf("Creating ordered pairs...\n");
   long int *temp_freq = pixel_frequency; // copy the frequency array for manipulation
   int j = 0; // used to track which ordered pair is being worked on
@@ -84,8 +88,10 @@ number_of_non_zero_values_in_the_frequency_array) {
       temp_freq[smallest_index] = -1;
     }
 
-    for (int j = 0; j < 6; j ++)
-      printf("%d %ld\n", j, temp_freq[j]); 
+    for (int j = 0; j < 256; j ++) {
+      if (temp_freq[j] != 0)
+        printf("%d %ld\n", j, temp_freq[j]); 
+    }
 
     count = number_of_non_zero_values_in_the_frequency_array;
     smallest_index = 0;
@@ -105,13 +111,15 @@ number_of_non_zero_values_in_the_frequency_array) {
     printf(" %d)\n", ordered_pairs[j].second_value);
   }
 
+
+  printf("HUFFMAN NODES GENERATED!\n");
   return ordered_pairs;
 }
 
 
 
 // for testing only
-int main() {
+int main2() {
   long int pixel_frequency[10];
   //pixel_frequency = (long int*) malloc(10);
   pixel_frequency[0] = 20; // 32

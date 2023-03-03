@@ -1,9 +1,5 @@
 #include "libpnm.h"
-
-struct node {
-  int first_value;
-  int second_value;
-};
+#include "generate_huffman_nodes.h"
 
 // Node value -1 is root, if a node has values left and right as -1 then they are a leaf
 struct Tree_Node {
