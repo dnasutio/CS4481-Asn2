@@ -6,7 +6,7 @@ long int *generate_pixel_frequency(struct PGM_Image *input_pgm_image, int
   printf("GENERATING PIXEL FREQUENCIES...\n");
   // Dynamically allocates a long int array of (max_gray_value + 1) elements
   long int *pixel_frequency;
-  printf("Max %d\n", input_pgm_image->maxGrayValue);
+  
   pixel_frequency = (long int *) malloc(sizeof(long int) * (input_pgm_image->maxGrayValue + 1));
 
   for (int i = 0; i < input_pgm_image->maxGrayValue + 1; i++) {
@@ -31,9 +31,9 @@ long int *generate_pixel_frequency(struct PGM_Image *input_pgm_image, int
     if (pixel_frequency[i] != 0)
       count++;
   }
-  printf("count %d\n", count);
+  
   *number_of_non_zero_values_in_the_frequency_array = count;
-  printf("%d\n", *number_of_non_zero_values_in_the_frequency_array);
+  
 
   printf("PIXEL FREQUENCIES GENERATED!\n");
   return pixel_frequency;

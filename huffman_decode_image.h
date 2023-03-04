@@ -1,6 +1,9 @@
 #include "libpnm.h"
 #include "generate_huffman_nodes.h"
 
+#ifndef GENERATE_HUFFMAN_NODES_H
+#define GENERATE_HUFFMAN_NODES_H
+
 // Node value -1 is root, if a node has values left and right as -1 then they are a leaf
 struct Tree_Node {
   int value;
@@ -11,3 +14,5 @@ struct Tree_Node {
 struct PGM_Image *huffman_decode_image( int image_width, int image_height, int max_gray_value, int
 number_of_nodes, struct node *huffman_node, long int length_of_encoded_image_array, unsigned char
 *encoded_image);
+
+#endif

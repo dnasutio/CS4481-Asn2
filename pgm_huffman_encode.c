@@ -39,19 +39,11 @@ int main(int argc, char *argv[]) {
 
   long int *pixel_frequency;
   pixel_frequency = generate_pixel_frequency(&img, number_of_non_zero_values_in_the_frequency_array);
-  for (int i = 0; i < img.maxGrayValue + 1; i++) {
-    printf("%d %ld\n", i, pixel_frequency[i]);
-  }
-  printf("Number of non-zeroes: %d\n", *number_of_non_zero_values_in_the_frequency_array);
 
   // Generate huffman nodes
   struct node *huffman_node;
   
   huffman_node = generate_huffman_nodes(pixel_frequency, img.maxGrayValue, *number_of_non_zero_values_in_the_frequency_array);
-  for (int j = 0; j < *number_of_non_zero_values_in_the_frequency_array - 1; j++) {
-    printf("(%d, ", huffman_node[j].first_value);
-    printf(" %d)\n", huffman_node[j].second_value);
-  }
 
   // Huffman encode the input image
   unsigned char *encoded_image;
@@ -62,7 +54,8 @@ int main(int argc, char *argv[]) {
   
   encoded_image = huffman_encode_image(&img, huffman_node, number_of_nodes, length_of_encoded_image_array);
 
-  
+  // store output image
+  store_huffman_encoded_data(argv[2], img.width, img.height, img.maxGrayValue, number_of_nodes, huffman_node, *length_of_encoded_image_array, encoded_image);
 
 
   return 0;

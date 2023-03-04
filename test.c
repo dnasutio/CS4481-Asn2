@@ -27,6 +27,17 @@ void doThing() {
     int sol = x * pow + y;
     printf("sol %d\n", sol);
 
+    unsigned char *word = malloc(sizeof(word) * 4);
+    int num = 10001;
+
+    word[0] = num;
+    printf("%d\n", word[0]);
+
+    FILE *fptr;
+    
+    fptr = fopen("test_file", "w");
+    fprintf(fptr, "%d", word[0]);
+    fclose(fptr);
 
     return 0;
 }
